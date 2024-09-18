@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+
 android {
-    compileSdkVersion COMPILE_SDK_VERSION as int
-    buildToolsVersion BUILD_TOOLS_VERSION
+    compileSdk COMPILE_SDK_VERSION as int
 
     defaultConfig {
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
+        namespace = "lib.kingja.switchbutton"
     }
     buildTypes {
         release {
@@ -17,19 +17,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-}
-publish {
-    artifactId = 'switchbutton'
-    userOrg = 'kingja'
-    groupId = 'lib.kingja.switchbutton'
-    publishVersion = '1.1.8'
-    desc = 'A smart switchable button,support multiple tabs.'
-    website = 'https://github.com/KingJA/SwitchButton'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 }

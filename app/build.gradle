@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion COMPILE_SDK_VERSION as int
-    buildToolsVersion BUILD_TOOLS_VERSION
+    compileSdk COMPILE_SDK_VERSION as int
     defaultConfig {
         applicationId "com.lib.kingja.switchbutton"
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
+        namespace = "com.lib.kingja.switchbutton"
     }
     buildTypes {
         release {
@@ -20,16 +20,16 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '26.0.2'
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.13.2'
     implementation project(':libk-switchbutton')
     //    compile 'lib.kingja.switchbutton:switchbutton:1.1.6'
     implementation "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
