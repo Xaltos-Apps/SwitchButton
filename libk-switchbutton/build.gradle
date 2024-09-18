@@ -21,8 +21,24 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    publishing {
+        singleVariant("release") {}
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId 'lib.kingja.switchbutton'
+                artifactId 'switchbutton'
+                version '2.0.0'
+            }
+        }
+    }
 }
